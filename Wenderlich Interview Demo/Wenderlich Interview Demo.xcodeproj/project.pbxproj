@@ -52,6 +52,7 @@
 		45DE79512797B8FA00425173 /* Wenderlich Interview Demo */ = {
 			isa = PBXGroup;
 			children = (
+				45DE79682797BFA000425173 /* Model */,
 				45DE79522797B8FA00425173 /* AppDelegate.swift */,
 				45DE79562797B8FA00425173 /* ViewController.swift */,
 				45DE795B2797B8FF00425173 /* Assets.xcassets */,
@@ -59,6 +60,13 @@
 				45DE79602797B8FF00425173 /* Info.plist */,
 			);
 			path = "Wenderlich Interview Demo";
+			sourceTree = "<group>";
+		};
+		45DE79682797BFA000425173 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

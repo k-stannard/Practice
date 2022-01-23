@@ -13,6 +13,7 @@
 		45DE795F2797B8FF00425173 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45DE795D2797B8FF00425173 /* LaunchScreen.storyboard */; };
 		45DE79712799138D00425173 /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DE79702799138D00425173 /* ArticleCell.swift */; };
 		45DE79732799154E00425173 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DE79722799154E00425173 /* Article.swift */; };
+		45F743AB279DFE9C004A4F84 /* ArticleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743AA279DFE9C004A4F84 /* ArticleDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		45DE79602797B8FF00425173 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45DE79702799138D00425173 /* ArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCell.swift; sourceTree = "<group>"; };
 		45DE79722799154E00425173 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		45F743AA279DFE9C004A4F84 /* ArticleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +88,18 @@
 		45DE796F2799130400425173 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				45DE79702799138D00425173 /* ArticleCell.swift */,
+				45F743A9279DFE75004A4F84 /* ArticleCell */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		45F743A9279DFE75004A4F84 /* ArticleCell */ = {
+			isa = PBXGroup;
+			children = (
+				45DE79702799138D00425173 /* ArticleCell.swift */,
+				45F743AA279DFE9C004A4F84 /* ArticleDetailView.swift */,
+			);
+			path = ArticleCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +175,7 @@
 				45DE79732799154E00425173 /* Article.swift in Sources */,
 				45DE79572797B8FA00425173 /* ViewController.swift in Sources */,
 				45DE79532797B8FA00425173 /* AppDelegate.swift in Sources */,
+				45F743AB279DFE9C004A4F84 /* ArticleDetailView.swift in Sources */,
 				45DE79712799138D00425173 /* ArticleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

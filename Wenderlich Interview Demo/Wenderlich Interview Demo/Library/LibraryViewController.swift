@@ -9,9 +9,8 @@ import UIKit
 
 class LibraryViewController: UIViewController {
     
-    let articles: [Article] = [
-
-    ]
+    var content: Content?
+    var articles = [Article]()
     
     var articleViewModels = [ArticleCell.ViewModel]()
     
@@ -21,20 +20,7 @@ class LibraryViewController: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
-        
-        articleViewModels = articles.map {
-            ArticleCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: "free", date: Date(), length: "12345")
-        }
-        
-        fetchArticles { result in
-            switch result {
-            case .success(let article):
-                print(article)
-            case .failure(let error):
-                print(error)
-            }
-        }
-        tableView.reloadData()
+        fetchData()
     }
 }
 
@@ -87,9 +73,26 @@ extension LibraryViewController: UITableViewDelegate {
 //TODO: - Plug in when network call is created
 extension LibraryViewController {
     
-//    func configureTableCells(with articles: [Article]) {
-//        articleViewModels = articles.map {
-//            ArticleCell.ViewModel(name: $0.name, description: $0.description, contentType: $0.content_type)
-//        }
-//    }
+    func fetchData() {
+        fetchArticles { [unowned self] result in
+            switch result {
+            case .success(let articles):
+                articles.forEach { item in
+                    self.articles.append(item.attributes)
+                }
+                self.configureTableCells(with: self.articles)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func configureTableCells(with articles: [Article]) {
+        articleViewModels = articles.map {
+            ArticleCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: String($0.free), date: Date(), length: String($0.duration))
+        }
+    }
 }

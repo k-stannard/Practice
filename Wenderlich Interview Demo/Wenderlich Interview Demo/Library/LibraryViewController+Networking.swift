@@ -14,7 +14,7 @@ enum NetworkError: Error {
 
 extension LibraryViewController {
     
-    func fetchArticles(completion: @escaping (Result<Content, NetworkError>) -> Void) {
+    func fetchArticles(completion: @escaping (Result<[ArticleData], NetworkError>) -> Void) {
         let url = URL(string: "https://api.raywenderlich.com/api/contents/")!
         
         URLSession.shared.dataTask(with: url) { data, _, error in
@@ -26,7 +26,8 @@ extension LibraryViewController {
             do {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let result = try decoder.decode(Content.self, from: data)
+                let content = try decoder.decode(Content.self, from: data)
+                let result = content.data
                 completion(.success(result))
             } catch {
                 completion(.failure(.decodingError))

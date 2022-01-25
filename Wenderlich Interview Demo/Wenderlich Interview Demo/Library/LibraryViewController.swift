@@ -1,0 +1,95 @@
+//
+//  ViewController.swift
+//  Wenderlich Interview Demo
+//
+//  Created by Koty Stannard on 1/18/22.
+//
+
+import UIKit
+
+class LibraryViewController: UIViewController {
+    
+    let articles: [Article] = [
+
+    ]
+    
+    var articleViewModels = [ArticleCell.ViewModel]()
+    
+    let tableView = UITableView()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
+        layout()
+        
+        articleViewModels = articles.map {
+            ArticleCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: "free", date: Date(), length: "12345")
+        }
+        
+        fetchArticles { result in
+            switch result {
+            case .success(let article):
+                print(article)
+            case .failure(let error):
+                print(error)
+            }
+        }
+        tableView.reloadData()
+    }
+}
+
+extension LibraryViewController {
+    func setup() {
+        configureTableView()
+    }
+    
+    func configureTableView() {
+        tableView.register(ArticleCell.self, forCellReuseIdentifier: ArticleCell.reuseid)
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = ArticleCell.rowHeight
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func layout() {
+        view.addSubview(tableView)
+        
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+}
+
+extension LibraryViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return articles.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let article = articleViewModels[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArticleCell.reuseid, for: indexPath) as! ArticleCell
+        cell.configure(with: article)
+        return cell
+    }
+}
+
+extension LibraryViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+//TODO: - Plug in when network call is created
+extension LibraryViewController {
+    
+//    func configureTableCells(with articles: [Article]) {
+//        articleViewModels = articles.map {
+//            ArticleCell.ViewModel(name: $0.name, description: $0.description, contentType: $0.content_type)
+//        }
+//    }
+}

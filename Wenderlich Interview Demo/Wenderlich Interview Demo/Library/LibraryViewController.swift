@@ -36,6 +36,8 @@ extension LibraryViewController {
         tableView.delegate = self
         tableView.rowHeight = ArticleCell.rowHeight
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.init(red: 217/255, green: 242/255, blue: 255/255, alpha: 1)
     }
     
     func layout() {

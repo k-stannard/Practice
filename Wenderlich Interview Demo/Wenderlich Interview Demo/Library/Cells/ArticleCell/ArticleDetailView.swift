@@ -12,6 +12,8 @@ class ArticleDetailView: UIView {
     let articleInfoStackView = UIStackView()
     let titleLabel = UILabel()
     let techLabel = UILabel()
+    
+    let artworkImageView = UIImageView()
     let descriptionLabel = UILabel()
     
     let detailInfoStackView = UIStackView()
@@ -40,18 +42,21 @@ extension ArticleDetailView {
     
     func setupArticleInfoStackView() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         titleLabel.adjustsFontSizeToFitWidth = true
-        //titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 2
         titleLabel.text = "TITLE"
         
         techLabel.translatesAutoresizingMaskIntoConstraints = false
-        techLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        techLabel.font = UIFont.preferredFont(forTextStyle: .title3)
         techLabel.text = "TECH STACK"
+        
+        artworkImageView.translatesAutoresizingMaskIntoConstraints = false
+        artworkImageView.backgroundColor = .black
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.numberOfLines = 4
         descriptionLabel.text = "DESCRIPTION"
         
         articleInfoStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -63,10 +68,10 @@ extension ArticleDetailView {
         
         articleInfoStackView.addArrangedSubview(titleLabel)
         articleInfoStackView.addArrangedSubview(techLabel)
-        articleInfoStackView.addArrangedSubview(descriptionLabel)
-        articleInfoStackView.addArrangedSubview(detailInfoStackView)
         
         addSubview(articleInfoStackView)
+        addSubview(descriptionLabel)
+        addSubview(artworkImageView)
     }
     
     func setupDetailInfoStackView() {
@@ -91,14 +96,28 @@ extension ArticleDetailView {
         detailInfoStackView.addArrangedSubview(accessLabel)
         detailInfoStackView.addArrangedSubview(articleDateLabel)
         detailInfoStackView.addArrangedSubview(articleLengthLabel)
+        
+        addSubview(detailInfoStackView)
     }
     
     func layout() {
         NSLayoutConstraint.activate([
             articleInfoStackView.topAnchor.constraint(equalTo: topAnchor),
             articleInfoStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            articleInfoStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            articleInfoStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            articleInfoStackView.trailingAnchor.constraint(equalTo: artworkImageView.leadingAnchor, constant: -8),
+            
+            artworkImageView.topAnchor.constraint(equalTo: topAnchor),
+            artworkImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            artworkImageView.widthAnchor.constraint(equalToConstant: 75),
+            artworkImageView.heightAnchor.constraint(equalToConstant: 75),
+            
+            descriptionLabel.leadingAnchor.constraint(equalTo: articleInfoStackView.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: artworkImageView.trailingAnchor),
+            descriptionLabel.bottomAnchor.constraint(equalTo: detailInfoStackView.topAnchor, constant: -8),
+            
+            detailInfoStackView.leadingAnchor.constraint(equalTo: descriptionLabel.leadingAnchor),
+            detailInfoStackView.trailingAnchor.constraint(equalTo: descriptionLabel.trailingAnchor),
+            detailInfoStackView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

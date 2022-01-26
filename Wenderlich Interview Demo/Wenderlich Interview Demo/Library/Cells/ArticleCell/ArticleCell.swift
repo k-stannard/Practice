@@ -31,6 +31,11 @@ class ArticleCell: UITableViewCell {
         setup()
         layout()
     }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10))
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -42,14 +47,17 @@ extension ArticleCell {
     func setup() {
         articleDetailView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(articleDetailView)
+        contentView.backgroundColor = .white
+        contentView.layer.cornerRadius = 12
+        backgroundColor = UIColor.init(red: 217/255, green: 242/255, blue: 255/255, alpha: 1)
     }
     
     func layout() {
         NSLayoutConstraint.activate([
-            articleDetailView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            articleDetailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            articleDetailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            articleDetailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            articleDetailView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            articleDetailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            articleDetailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            articleDetailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
     

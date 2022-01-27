@@ -27,6 +27,8 @@ class LibraryViewController: UIViewController {
 extension LibraryViewController {
     func setup() {
         configureTableView()
+        title = "Library"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func configureTableView() {
@@ -68,7 +70,9 @@ extension LibraryViewController: UITableViewDataSource {
 
 extension LibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let article = articles[indexPath.row]
+        let destination = LibraryDetailViewController(articleName: article.name)
+        navigationController?.pushViewController(destination, animated: true)
     }
 }
 

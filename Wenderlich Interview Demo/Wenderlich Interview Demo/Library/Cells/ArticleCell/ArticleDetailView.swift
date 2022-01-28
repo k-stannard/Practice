@@ -52,7 +52,9 @@ extension ArticleDetailView {
         techLabel.text = "TECH STACK"
         
         artworkImageView.translatesAutoresizingMaskIntoConstraints = false
-        artworkImageView.backgroundColor = .black
+        artworkImageView.image = UIImage(named: "temp")
+        artworkImageView.layer.cornerRadius = 12
+        artworkImageView.clipsToBounds = true
         
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)

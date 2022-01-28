@@ -24,6 +24,7 @@ class LibraryViewController: UIViewController {
     }
 }
 
+//MARK: - View Controller Setup & Layout
 extension LibraryViewController {
     func setup() {
         configureTableView()
@@ -54,6 +55,7 @@ extension LibraryViewController {
     }
 }
 
+//MARK: - Table View DataSource Methods
 extension LibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return articles.count
@@ -68,15 +70,17 @@ extension LibraryViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - Table View Delegate Methods
 extension LibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = articles[indexPath.row]
-        let destination = LibraryDetailViewController(articleName: article.name)
+        let destination = LibraryDetailViewController(article: article)
         navigationController?.pushViewController(destination, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
-//TODO: - Plug in when network call is created
+//TODO: - Data Fetching & Configuration
 extension LibraryViewController {
     
     func fetchData() {
@@ -97,8 +101,33 @@ extension LibraryViewController {
     }
     
     func configureTableCells(with articles: [Article]) {
+        lazy var accessLevel: String = ""
+        
         articleViewModels = articles.map {
-            ArticleCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: String($0.free), date: Date(), length: String($0.duration))
+            accessLevel = $0.free == true ? "" : "Pro"
+            let tuple = minutesToHoursAndMinutes($0.duration)
+            let date = format($0.releasedAt)
+            return ArticleCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: accessLevel, date: date, length: "\(tuple.hours) hrs, \(tuple.leftMinutes) mins")
         }
+    }
+}
+
+//MARK: - Date & Time Formatting
+extension LibraryViewController {
+    
+    func minutesToHoursAndMinutes(_ minutes: Int) -> (hours: Int, leftMinutes: Int) {
+        return (minutes / 60, (minutes % 60))
+    }
+    
+    func format(_ date: String) -> String {
+        let isoFormatter = ISO8601DateFormatter()
+        isoFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate, .withFractionalSeconds]
+        let isoDate = isoFormatter.date(from: date)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "MMM d yyyy"
+        
+        return dateFormatter.string(from: isoDate!)
     }
 }

@@ -14,7 +14,7 @@ class ArticleCell: UITableViewCell {
         let description: String
         let techStack: String
         let access: String
-        let date: Date
+        let date: String
         let length: String
     }
     

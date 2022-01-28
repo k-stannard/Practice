@@ -7,14 +7,39 @@
 
 import UIKit
 
+import UIKit
+
 class LibraryDetailViewController: UIViewController {
     
-    var articleName: String!
+    var article: Article
     
-    init(articleName: String) {
+    let artworkImage = UIImageView()
+    let techLabel = UILabel()
+    let titleLabel = UILabel()
+    
+    let articleInfoStack = UIStackView()
+    let dateLabel = UILabel()
+    let difficultyLabel = UILabel()
+    let durationLabel = UILabel()
+    
+    let buttonStackView = UIStackView()
+    let downloadButton = UIButton()
+    let bookmarkButton = UIButton()
+    
+    let descriptionLabel = UILabel()
+    let authorLabel = UILabel()
+    
+    init(article: Article) {
+        self.article = article
+        self.techLabel.text = article.technologyTripleString
+        self.titleLabel.text = article.name
+        self.dateLabel.text = article.releasedAt
+        self.difficultyLabel.text = article.difficulty
+        self.durationLabel.text = "\(article.duration)"
+        self.descriptionLabel.text = article.descriptionPlainText
+        self.authorLabel.text = article.contributorString
+        
         super.init(nibName: nil, bundle: nil)
-        self.articleName = articleName
-        title = articleName
     }
     
     required init?(coder: NSCoder) {
@@ -23,7 +48,106 @@ class LibraryDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .systemRed
+        style()
+        layout()
     }
 }
+
+extension LibraryDetailViewController {
+    func style() {
+        view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .never
+        
+        artworkImage.translatesAutoresizingMaskIntoConstraints = false
+        artworkImage.image = UIImage(named: "temp")
+        
+        techLabel.translatesAutoresizingMaskIntoConstraints = false
+        techLabel.font =  UIFont.preferredFont(forTextStyle: .body)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        titleLabel.numberOfLines = 2
+        
+        setupArticleInfoStackView()
+        setupButtonStackView()
+        
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        descriptionLabel.numberOfLines = 0
+        
+        authorLabel.translatesAutoresizingMaskIntoConstraints = false
+        authorLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        authorLabel.numberOfLines = 0
+        
+        view.addSubview(artworkImage)
+        view.addSubview(techLabel)
+        view.addSubview(titleLabel)
+        view.addSubview(descriptionLabel)
+        view.addSubview(authorLabel)
+        
+    }
+    
+    func setupArticleInfoStackView() {
+        articleInfoStack.translatesAutoresizingMaskIntoConstraints = false
+        articleInfoStack.axis = .horizontal
+        articleInfoStack.alignment = .leading
+        articleInfoStack.distribution = .equalSpacing
+        
+        [dateLabel, difficultyLabel, durationLabel].forEach { label in
+            label.font = UIFont.preferredFont(forTextStyle: .body)
+            articleInfoStack.addArrangedSubview(label)
+        }
+        
+        view.addSubview(articleInfoStack)
+    }
+    
+    func setupButtonStackView() {
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        buttonStackView.axis = .horizontal
+        buttonStackView.distribution = .equalCentering
+        buttonStackView.alignment = .leading
+        
+        downloadButton.setImage(UIImage(systemName: "square.and.arrow.down.fill"), for: .normal)
+        bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        
+        buttonStackView.addArrangedSubview(downloadButton)
+        buttonStackView.addArrangedSubview(bookmarkButton)
+        
+        view.addSubview(buttonStackView)
+    }
+    
+    func layout() {
+        
+        NSLayoutConstraint.activate([
+            artworkImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            artworkImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            artworkImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            artworkImage.heightAnchor.constraint(equalToConstant: view.frame.width),
+            
+            techLabel.topAnchor.constraint(equalTo: artworkImage.bottomAnchor, constant: 8),
+            techLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            techLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            titleLabel.topAnchor.constraint(equalTo: techLabel.bottomAnchor, constant: 8),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            articleInfoStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            articleInfoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            articleInfoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            buttonStackView.topAnchor.constraint(equalTo: articleInfoStack.bottomAnchor, constant: 8),
+            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            descriptionLabel.topAnchor.constraint(equalTo: buttonStackView.bottomAnchor, constant: 16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            
+            authorLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),
+            authorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            authorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+    }
+}
+

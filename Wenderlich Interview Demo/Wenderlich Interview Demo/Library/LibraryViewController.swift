@@ -125,6 +125,9 @@ extension LibraryViewController {
     }
     
     func reloadView() {
+        self.articlesAndVideos.sort { content1, content2 in
+            content1.releasedAt > content2.releasedAt
+        }
         self.configureTableCells(with: self.articlesAndVideos)
         self.tableView.reloadData()
     }

@@ -8,16 +8,15 @@
 import Foundation
 
 struct Content: Codable {
-    let data: [ArticleData]
-    //let includedData: [IncludedData]
+    let data: [ContentData]
 }
 
-struct ArticleData: Codable {
+struct ContentData: Codable {
     let id: String
-    let attributes: Article
+    let attributes: ArticlesAndVideos
 }
 
-struct Article: Codable {
+struct ArticlesAndVideos: Codable {
     let name: String
     let releasedAt: String
     let free: Bool
@@ -28,20 +27,4 @@ struct Article: Codable {
     let contributorString: String
     let descriptionPlainText: String
     let cardArtworkUrl: URL
-}
-
-struct IncludedData: Codable {
-    let included: Included
-}
-
-struct Included: Codable {
-    let id: String
-    let attributes: IncludedAttributes
-}
-
-struct IncludedAttributes: Codable {
-    let name: String
-    let slug: String
-    let description: String
-    let level: String
 }

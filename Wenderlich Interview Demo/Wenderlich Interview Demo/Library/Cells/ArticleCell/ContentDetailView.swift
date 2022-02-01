@@ -1,5 +1,5 @@
 //
-//  ArticleDetailView.swift
+//  ContentDetailView.swift
 //  Wenderlich Interview Demo
 //
 //  Created by Koty Stannard on 1/23/22.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class ArticleDetailView: UIView {
+class ContentDetailView: UIView {
     
-    let articleInfoStackView = UIStackView()
+    let contentInfoStackView = UIStackView()
     let titleLabel = UILabel()
     let techLabel = UILabel()
     
@@ -18,8 +18,8 @@ class ArticleDetailView: UIView {
     
     let detailInfoStackView = UIStackView()
     let accessLabel = UILabel()
-    let articleDateLabel = UILabel()
-    let articleLengthLabel = UILabel()
+    let dateLabel = UILabel()
+    let durationLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,14 +33,14 @@ class ArticleDetailView: UIView {
     }
 }
 
-extension ArticleDetailView {
+extension ContentDetailView {
     
     func style() {
-        setupArticleInfoStackView()
+        setupContentInfoStackView()
         setupDetailInfoStackView()
     }
     
-    func setupArticleInfoStackView() {
+    func setupContentInfoStackView() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = UIFont.preferredFont(forTextStyle: .title2)
         titleLabel.adjustsFontSizeToFitWidth = true
@@ -61,17 +61,17 @@ extension ArticleDetailView {
         descriptionLabel.numberOfLines = 4
         descriptionLabel.text = "DESCRIPTION"
         
-        articleInfoStackView.translatesAutoresizingMaskIntoConstraints = false
-        articleInfoStackView.axis = .vertical
-        articleInfoStackView.alignment = .top
-        articleInfoStackView.spacing = 8
+        contentInfoStackView.translatesAutoresizingMaskIntoConstraints = false
+        contentInfoStackView.axis = .vertical
+        contentInfoStackView.alignment = .top
+        contentInfoStackView.spacing = 8
         
         detailInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         
-        articleInfoStackView.addArrangedSubview(titleLabel)
-        articleInfoStackView.addArrangedSubview(techLabel)
+        contentInfoStackView.addArrangedSubview(titleLabel)
+        contentInfoStackView.addArrangedSubview(techLabel)
         
-        addSubview(articleInfoStackView)
+        addSubview(contentInfoStackView)
         addSubview(descriptionLabel)
         addSubview(artworkImageView)
     }
@@ -81,14 +81,14 @@ extension ArticleDetailView {
         accessLabel.font = UIFont.preferredFont(forTextStyle: .body)
         accessLabel.text = "ACCESS"
         
-        articleDateLabel.translatesAutoresizingMaskIntoConstraints = false
-        articleDateLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        articleDateLabel.adjustsFontSizeToFitWidth = true
-        articleDateLabel.text = "DATE"
+        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+        dateLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        dateLabel.adjustsFontSizeToFitWidth = true
+        dateLabel.text = "DATE"
         
-        articleLengthLabel.translatesAutoresizingMaskIntoConstraints = false
-        articleLengthLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        articleLengthLabel.text = "ARTICLE LENGTH"
+        durationLabel.translatesAutoresizingMaskIntoConstraints = false
+        durationLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        durationLabel.text = "ARTICLE LENGTH"
         
         detailInfoStackView.translatesAutoresizingMaskIntoConstraints = false
         detailInfoStackView.axis = .horizontal
@@ -96,24 +96,24 @@ extension ArticleDetailView {
         detailInfoStackView.spacing = 8
         
         detailInfoStackView.addArrangedSubview(accessLabel)
-        detailInfoStackView.addArrangedSubview(articleDateLabel)
-        detailInfoStackView.addArrangedSubview(articleLengthLabel)
+        detailInfoStackView.addArrangedSubview(dateLabel)
+        detailInfoStackView.addArrangedSubview(durationLabel)
         
         addSubview(detailInfoStackView)
     }
     
     func layout() {
         NSLayoutConstraint.activate([
-            articleInfoStackView.topAnchor.constraint(equalTo: topAnchor),
-            articleInfoStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            articleInfoStackView.trailingAnchor.constraint(equalTo: artworkImageView.leadingAnchor, constant: -8),
+            contentInfoStackView.topAnchor.constraint(equalTo: topAnchor),
+            contentInfoStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentInfoStackView.trailingAnchor.constraint(equalTo: artworkImageView.leadingAnchor, constant: -8),
             
             artworkImageView.topAnchor.constraint(equalTo: topAnchor),
             artworkImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
             artworkImageView.widthAnchor.constraint(equalToConstant: 75),
             artworkImageView.heightAnchor.constraint(equalToConstant: 75),
             
-            descriptionLabel.leadingAnchor.constraint(equalTo: articleInfoStackView.leadingAnchor),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentInfoStackView.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(equalTo: artworkImageView.trailingAnchor),
             descriptionLabel.bottomAnchor.constraint(equalTo: detailInfoStackView.topAnchor, constant: -8),
             

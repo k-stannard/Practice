@@ -1,5 +1,5 @@
 //
-//  ArticleCell.swift
+//  ContentCell.swift
 //  Wenderlich Interview Demo
 //
 //  Created by Koty Stannard on 1/19/22.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ArticleCell: UITableViewCell {
+class ContentCell: UITableViewCell {
     
     struct ViewModel {
         let name: String
@@ -20,7 +20,7 @@ class ArticleCell: UITableViewCell {
     
     let viewModel: ViewModel? = nil
     
-    let articleDetailView = ArticleDetailView()
+    let contentDetailView = ContentDetailView()
     
     static let reuseid = "CustomCell"
     static let rowHeight: CGFloat = 250
@@ -42,11 +42,11 @@ class ArticleCell: UITableViewCell {
     }
 }
 
-extension ArticleCell {
+extension ContentCell {
     
     func setup() {
-        articleDetailView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(articleDetailView)
+        contentDetailView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(contentDetailView)
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 12
         backgroundColor = UIColor.init(red: 217/255, green: 242/255, blue: 255/255, alpha: 1)
@@ -54,19 +54,19 @@ extension ArticleCell {
     
     func layout() {
         NSLayoutConstraint.activate([
-            articleDetailView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            articleDetailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            articleDetailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            articleDetailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            contentDetailView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            contentDetailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+            contentDetailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+            contentDetailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
     
     func configure(with viewModel: ViewModel) {
-        articleDetailView.titleLabel.text = viewModel.name
-        articleDetailView.techLabel.text = viewModel.techStack
-        articleDetailView.descriptionLabel.text = viewModel.description
-        articleDetailView.accessLabel.text = viewModel.access
-        articleDetailView.articleDateLabel.text = "\(viewModel.date)"
-        articleDetailView.articleLengthLabel.text = viewModel.length
+        contentDetailView.titleLabel.text = viewModel.name
+        contentDetailView.techLabel.text = viewModel.techStack
+        contentDetailView.descriptionLabel.text = viewModel.description
+        contentDetailView.accessLabel.text = viewModel.access
+        contentDetailView.dateLabel.text = "\(viewModel.date)"
+        contentDetailView.durationLabel.text = viewModel.length
     }
 }

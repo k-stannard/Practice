@@ -11,13 +11,13 @@ import UIKit
 
 class LibraryDetailViewController: UIViewController {
     
-    var article: Article
+    var content: ArticlesAndVideos
     
     let artworkImage = UIImageView()
     let techLabel = UILabel()
     let titleLabel = UILabel()
     
-    let articleInfoStack = UIStackView()
+    let contentInfoStack = UIStackView()
     let dateLabel = UILabel()
     let difficultyLabel = UILabel()
     let durationLabel = UILabel()
@@ -29,15 +29,15 @@ class LibraryDetailViewController: UIViewController {
     let descriptionLabel = UILabel()
     let authorLabel = UILabel()
     
-    init(article: Article) {
-        self.article = article
-        self.techLabel.text = article.technologyTripleString
-        self.titleLabel.text = article.name
-        self.dateLabel.text = article.releasedAt
-        self.difficultyLabel.text = article.difficulty
-        self.durationLabel.text = "\(article.duration)"
-        self.descriptionLabel.text = article.descriptionPlainText
-        self.authorLabel.text = article.contributorString
+    init(content: ArticlesAndVideos) {
+        self.content = content
+        self.techLabel.text = content.technologyTripleString
+        self.titleLabel.text = content.name
+        self.dateLabel.text = content.releasedAt
+        self.difficultyLabel.text = content.difficulty
+        self.durationLabel.text = "\(content.duration)"
+        self.descriptionLabel.text = content.descriptionPlainText
+        self.authorLabel.text = content.contributorString
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -88,17 +88,17 @@ extension LibraryDetailViewController {
     }
     
     func setupArticleInfoStackView() {
-        articleInfoStack.translatesAutoresizingMaskIntoConstraints = false
-        articleInfoStack.axis = .horizontal
-        articleInfoStack.alignment = .leading
-        articleInfoStack.distribution = .equalSpacing
+        contentInfoStack.translatesAutoresizingMaskIntoConstraints = false
+        contentInfoStack.axis = .horizontal
+        contentInfoStack.alignment = .leading
+        contentInfoStack.distribution = .equalSpacing
         
         [dateLabel, difficultyLabel, durationLabel].forEach { label in
             label.font = UIFont.preferredFont(forTextStyle: .body)
-            articleInfoStack.addArrangedSubview(label)
+            contentInfoStack.addArrangedSubview(label)
         }
         
-        view.addSubview(articleInfoStack)
+        view.addSubview(contentInfoStack)
     }
     
     func setupButtonStackView() {
@@ -132,11 +132,11 @@ extension LibraryDetailViewController {
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            articleInfoStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            articleInfoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            articleInfoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            contentInfoStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            contentInfoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            contentInfoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
-            buttonStackView.topAnchor.constraint(equalTo: articleInfoStack.bottomAnchor, constant: 8),
+            buttonStackView.topAnchor.constraint(equalTo: contentInfoStack.bottomAnchor, constant: 8),
             buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             buttonStackView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
             

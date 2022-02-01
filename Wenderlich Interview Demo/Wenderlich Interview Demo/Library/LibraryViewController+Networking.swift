@@ -1,5 +1,5 @@
 //
-//  ArticleViewController+Networking.swift
+//  LibraryViewController+Networking.swift
 //  Wenderlich Interview Demo
 //
 //  Created by Koty Stannard on 1/24/22.
@@ -8,15 +8,14 @@
 import Foundation
 
 enum NetworkError: Error {
+    case invalidURL
     case serverError
     case decodingError
 }
 
 extension LibraryViewController {
     
-    func fetchArticles(completion: @escaping (Result<[ArticleData], NetworkError>) -> Void) {
-        let url = URL(string: "https://api.raywenderlich.com/api/contents/")!
-        
+    func fetchContent(url: URL, completion: @escaping (Result<[ContentData], NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data, error == nil else {
                 completion(.failure(.serverError))

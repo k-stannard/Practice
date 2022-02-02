@@ -14,7 +14,7 @@
 		45DE79712799138D00425173 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DE79702799138D00425173 /* ContentCell.swift */; };
 		45DE79732799154E00425173 /* ArticlesAndVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DE79722799154E00425173 /* ArticlesAndVideos.swift */; };
 		45F743AB279DFE9C004A4F84 /* ContentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743AA279DFE9C004A4F84 /* ContentDetailView.swift */; };
-		45F743AD279F982B004A4F84 /* LibraryViewController+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743AC279F982B004A4F84 /* LibraryViewController+Networking.swift */; };
+		45F743AD279F982B004A4F84 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743AC279F982B004A4F84 /* NetworkManager.swift */; };
 		45F743AF27A22824004A4F84 /* LibraryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743AE27A22824004A4F84 /* LibraryDetailViewController.swift */; };
 		45F743B227A8C155004A4F84 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743B127A8C154004A4F84 /* Constants.swift */; };
 		45F743B527AA20EA004A4F84 /* ContentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743B427AA20E9004A4F84 /* ContentImageView.swift */; };
@@ -30,7 +30,7 @@
 		45DE79702799138D00425173 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		45DE79722799154E00425173 /* ArticlesAndVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesAndVideos.swift; sourceTree = "<group>"; };
 		45F743AA279DFE9C004A4F84 /* ContentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentDetailView.swift; sourceTree = "<group>"; };
-		45F743AC279F982B004A4F84 /* LibraryViewController+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LibraryViewController+Networking.swift"; sourceTree = "<group>"; };
+		45F743AC279F982B004A4F84 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		45F743AE27A22824004A4F84 /* LibraryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailViewController.swift; sourceTree = "<group>"; };
 		45F743B127A8C154004A4F84 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		45F743B427AA20E9004A4F84 /* ContentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImageView.swift; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				45F743AE27A22824004A4F84 /* LibraryDetailViewController.swift */,
 				45F743B327AA20D9004A4F84 /* Views */,
 				45DE796F2799130400425173 /* Cells */,
-				45F743AC279F982B004A4F84 /* LibraryViewController+Networking.swift */,
+				45F743AC279F982B004A4F84 /* NetworkManager.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 				45DE79732799154E00425173 /* ArticlesAndVideos.swift in Sources */,
 				45DE79572797B8FA00425173 /* LibraryViewController.swift in Sources */,
 				45DE79532797B8FA00425173 /* AppDelegate.swift in Sources */,
-				45F743AD279F982B004A4F84 /* LibraryViewController+Networking.swift in Sources */,
+				45F743AD279F982B004A4F84 /* NetworkManager.swift in Sources */,
 				45F743AF27A22824004A4F84 /* LibraryDetailViewController.swift in Sources */,
 				45F743AB279DFE9C004A4F84 /* ContentDetailView.swift in Sources */,
 				45DE79712799138D00425173 /* ContentCell.swift in Sources */,

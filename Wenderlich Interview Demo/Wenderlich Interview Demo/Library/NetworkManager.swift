@@ -1,11 +1,11 @@
 //
-//  LibraryViewController+Networking.swift
+//  NetworkManager.swift
 //  Wenderlich Interview Demo
 //
 //  Created by Koty Stannard on 1/24/22.
 //
 
-import Foundation
+import UIKit
 
 enum NetworkError: Error {
     case invalidURL
@@ -13,7 +13,12 @@ enum NetworkError: Error {
     case decodingError
 }
 
-extension LibraryViewController {
+class NetworkManager {
+    
+    static let shared = NetworkManager()
+    let cache = NSCache<NSString, UIImage>()
+    
+    private init() {}
     
     func fetchContent(url: URL, completion: @escaping (Result<[ContentData], NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, _, error in

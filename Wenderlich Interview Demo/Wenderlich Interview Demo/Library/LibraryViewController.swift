@@ -96,7 +96,7 @@ extension LibraryViewController {
     
     func fetchArticleContent(group: DispatchGroup) {
         group.enter()
-        fetchContent(url: Constants.articleUrl) { result in
+        NetworkManager.shared.fetchContent(url: Constants.articleUrl) { result in
             switch result {
             case .success(let articles):
                 articles.forEach { article in
@@ -111,7 +111,7 @@ extension LibraryViewController {
     
     func fetchVideoContent(group: DispatchGroup) {
         group.enter()
-        fetchContent(url: Constants.videoUrl) { result in
+        NetworkManager.shared.fetchContent(url: Constants.videoUrl) { result in
             switch result {
             case .success(let videos):
                 videos.forEach { video in

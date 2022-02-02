@@ -13,7 +13,7 @@ class ContentDetailView: UIView {
     let titleLabel = UILabel()
     let techLabel = UILabel()
     
-    let artworkImageView = UIImageView()
+    let artworkImageView = ContentImageView(frame: .zero)
     let descriptionLabel = UILabel()
     
     let detailInfoStackView = UIStackView()

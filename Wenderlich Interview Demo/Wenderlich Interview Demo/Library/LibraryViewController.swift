@@ -139,7 +139,7 @@ extension LibraryViewController {
             accessLevel = $0.free == true ? "" : "Pro"
             let tuple = minutesToHoursAndMinutes($0.duration)
             let date = format($0.releasedAt)
-            return ContentCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: accessLevel, date: date, length: "\(tuple.hours) hrs, \(tuple.leftMinutes) mins")
+            return ContentCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: accessLevel, date: date, length: "\(tuple.hours) hrs, \(tuple.leftMinutes) mins", artworkUrl: $0.cardArtworkUrl)
         }
     }
 }

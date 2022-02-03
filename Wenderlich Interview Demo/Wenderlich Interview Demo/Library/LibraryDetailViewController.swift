@@ -11,7 +11,7 @@ import UIKit
 
 class LibraryDetailViewController: UIViewController {
     
-    var content: ArticlesAndVideos
+    var content: Attributes
     
     let artworkImage = UIImageView()
     let techLabel = UILabel()
@@ -29,7 +29,7 @@ class LibraryDetailViewController: UIViewController {
     let descriptionLabel = UILabel()
     let authorLabel = UILabel()
     
-    init(content: ArticlesAndVideos) {
+    init(content: Attributes) {
         self.content = content
         self.techLabel.text = content.technologyTripleString
         self.titleLabel.text = content.name

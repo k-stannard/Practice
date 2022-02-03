@@ -15,7 +15,7 @@ class ContentCell: UITableViewCell {
         let techStack: String
         let access: String
         let date: String
-        let length: String
+        let duration: String
         let artworkUrl: URL
     }
     
@@ -68,7 +68,7 @@ extension ContentCell {
         contentDetailView.descriptionLabel.text = viewModel.description
         contentDetailView.accessLabel.text = viewModel.access
         contentDetailView.dateLabel.text = "\(viewModel.date)"
-        contentDetailView.durationLabel.text = viewModel.length
+        contentDetailView.durationLabel.text = viewModel.duration
         
         contentDetailView.artworkImageView.downloadImage(from: viewModel.artworkUrl)
     }

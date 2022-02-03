@@ -10,7 +10,7 @@ import UIKit
 class LibraryViewController: UIViewController {
     
     var content: Content?
-    var articlesAndVideos = [ArticlesAndVideos]()
+    var attributes = [Attributes]()
     
     var contentViewModels = [ContentCell.ViewModel]()
     
@@ -58,7 +58,7 @@ extension LibraryViewController {
 //MARK: - Table View DataSource Methods
 extension LibraryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return articlesAndVideos.count
+        return attributes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,7 +73,7 @@ extension LibraryViewController: UITableViewDataSource {
 //MARK: - Table View Delegate Methods
 extension LibraryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let content = articlesAndVideos[indexPath.row]
+        let content = attributes[indexPath.row]
         let destination = LibraryDetailViewController(content: content)
         navigationController?.pushViewController(destination, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
@@ -100,7 +100,7 @@ extension LibraryViewController {
             switch result {
             case .success(let articles):
                 articles.forEach { article in
-                    self.articlesAndVideos.append(article.attributes)
+                    self.attributes.append(article.attributes)
                 }
             case .failure(let error):
                 print(error)
@@ -115,7 +115,7 @@ extension LibraryViewController {
             switch result {
             case .success(let videos):
                 videos.forEach { video in
-                    self.articlesAndVideos.append(video.attributes)
+                    self.attributes.append(video.attributes)
                 }
             case .failure(let error):
                 print(error)
@@ -125,41 +125,17 @@ extension LibraryViewController {
     }
     
     func reloadView() {
-        self.articlesAndVideos.sort { content1, content2 in
+        self.attributes.sort { content1, content2 in
             content1.releasedAt > content2.releasedAt
         }
-        self.configureTableCells(with: self.articlesAndVideos)
+        self.configureTableCells(with: self.attributes)
         self.tableView.reloadData()
     }
     
-    func configureTableCells(with articles: [ArticlesAndVideos]) {
-        lazy var accessLevel: String = ""
+    func configureTableCells(with articles: [Attributes]) {
         
         contentViewModels = articles.map {
-            accessLevel = $0.free == true ? "" : "Pro"
-            let tuple = minutesToHoursAndMinutes($0.duration)
-            let date = format($0.releasedAt)
-            return ContentCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: accessLevel, date: date, length: "\(tuple.hours) hrs, \(tuple.leftMinutes) mins", artworkUrl: $0.cardArtworkUrl)
+            return ContentCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: $0.accessLevel, date: $0.formattedDate, duration: $0.formattedDuration, artworkUrl: $0.cardArtworkUrl)
         }
-    }
-}
-
-//MARK: - Date & Time Formatting
-extension LibraryViewController {
-    
-    func minutesToHoursAndMinutes(_ minutes: Int) -> (hours: Int, leftMinutes: Int) {
-        return (minutes / 60, (minutes % 60))
-    }
-    
-    func format(_ date: String) -> String {
-        let isoFormatter = ISO8601DateFormatter()
-        isoFormatter.formatOptions = [.withFullDate, .withDashSeparatorInDate, .withFractionalSeconds]
-        let isoDate = isoFormatter.date(from: date)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "MMM d yyyy"
-        
-        return dateFormatter.string(from: isoDate!)
     }
 }

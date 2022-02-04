@@ -29,6 +29,10 @@ struct Attributes: Codable {
     let cardArtworkUrl: URL
 }
 
+enum AttributeType {
+    case article, video, both
+}
+
 extension Attributes {
     
     var accessLevel: String {

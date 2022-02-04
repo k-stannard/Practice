@@ -50,7 +50,7 @@ extension ContentCell {
         contentView.addSubview(contentDetailView)
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 12
-        backgroundColor = UIColor.init(red: 217/255, green: 242/255, blue: 255/255, alpha: 1)
+        backgroundColor = Colors.appColor
     }
     
     func layout() {

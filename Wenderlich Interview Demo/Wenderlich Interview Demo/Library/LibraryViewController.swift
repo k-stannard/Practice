@@ -10,11 +10,17 @@ import UIKit
 class LibraryViewController: UIViewController {
     
     var content: Content?
+    var articleAttributes = [Attributes]()
+    var videoAttributes = [Attributes]()
     var attributes = [Attributes]()
+    
+    var selectedAttribute: AttributeType = .both
     
     var contentViewModels = [ContentCell.ViewModel]()
     
     let tableView = UITableView()
+    let segmentedControl = UISegmentedControl(items: ["Both", "Articles", "Videos"])
+    let stackView = UIStackView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +34,11 @@ class LibraryViewController: UIViewController {
 extension LibraryViewController {
     func setup() {
         configureTableView()
+        configureSegmentedControl()
+        configureStackView()
         title = "Library"
         navigationController?.navigationBar.prefersLargeTitles = true
+        view.backgroundColor = Colors.appColor
     }
     
     func configureTableView() {
@@ -40,18 +49,57 @@ extension LibraryViewController {
         tableView.rowHeight = ContentCell.rowHeight
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = .none
-        tableView.backgroundColor = UIColor.init(red: 217/255, green: 242/255, blue: 255/255, alpha: 1)
+        tableView.backgroundColor = Colors.appColor
+    }
+    
+    func configureSegmentedControl() {
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(handleSegmentChange), for: .valueChanged)
+    }
+    
+    func configureStackView() {
+        let paddedStackView = UIStackView(arrangedSubviews: [segmentedControl])
+        paddedStackView.layoutMargins = .init(top: 12, left: 12, bottom: 12, right: 12)
+        paddedStackView.isLayoutMarginsRelativeArrangement = true
+        
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.spacing = 8
+        stackView.axis = .vertical
+        
+        stackView.addArrangedSubview(paddedStackView)
+        stackView.addArrangedSubview(tableView)
+        
+        view.addSubview(stackView)
     }
     
     func layout() {
-        view.addSubview(tableView)
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+    }
+}
+
+//MARK: - Actions
+extension LibraryViewController {
+    
+    @objc func handleSegmentChange() {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            selectedAttribute = .both
+            DispatchQueue.main.async { self.reloadView() }
+        case 1:
+            selectedAttribute = .article
+            DispatchQueue.main.async { self.reloadView() }
+        case 2:
+            selectedAttribute = .video
+            DispatchQueue.main.async { self.reloadView() }
+        default:
+            break
+        }
     }
 }
 
@@ -62,10 +110,10 @@ extension LibraryViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let article = contentViewModels[indexPath.row]
+        let content = contentViewModels[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ContentCell.reuseid, for: indexPath) as! ContentCell
-        cell.configure(with: article)
+        cell.configure(with: content)
         return cell
     }
 }
@@ -96,11 +144,11 @@ extension LibraryViewController {
     
     func fetchArticleContent(group: DispatchGroup) {
         group.enter()
-        NetworkManager.shared.fetchContent(url: Constants.articleUrl) { result in
+        NetworkManager.shared.fetchContent(url: Url.articleUrl) { result in
             switch result {
             case .success(let articles):
                 articles.forEach { article in
-                    self.attributes.append(article.attributes)
+                    self.articleAttributes.append(article.attributes)
                 }
             case .failure(let error):
                 print(error)
@@ -111,11 +159,11 @@ extension LibraryViewController {
     
     func fetchVideoContent(group: DispatchGroup) {
         group.enter()
-        NetworkManager.shared.fetchContent(url: Constants.videoUrl) { result in
+        NetworkManager.shared.fetchContent(url: Url.videoUrl) { result in
             switch result {
             case .success(let videos):
                 videos.forEach { video in
-                    self.attributes.append(video.attributes)
+                    self.videoAttributes.append(video.attributes)
                 }
             case .failure(let error):
                 print(error)
@@ -125,6 +173,19 @@ extension LibraryViewController {
     }
     
     func reloadView() {
+        var attributes = [Attributes]()
+        
+        switch selectedAttribute {
+        case .article:
+            attributes = articleAttributes
+        case .video:
+            attributes = videoAttributes
+        case .both:
+            attributes = articleAttributes + videoAttributes
+        }
+        
+        self.attributes = attributes
+        
         self.attributes.sort { content1, content2 in
             content1.releasedAt > content2.releasedAt
         }
@@ -132,9 +193,9 @@ extension LibraryViewController {
         self.tableView.reloadData()
     }
     
-    func configureTableCells(with articles: [Attributes]) {
+    func configureTableCells(with attributes: [Attributes]) {
         
-        contentViewModels = articles.map {
+        contentViewModels = attributes.map {
             return ContentCell.ViewModel(name: $0.name, description: $0.descriptionPlainText, techStack: $0.technologyTripleString, access: $0.accessLevel, date: $0.formattedDate, duration: $0.formattedDuration, artworkUrl: $0.cardArtworkUrl)
         }
     }

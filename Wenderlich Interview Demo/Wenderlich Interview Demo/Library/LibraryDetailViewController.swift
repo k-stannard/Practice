@@ -7,37 +7,24 @@
 
 import UIKit
 
-import UIKit
-
 class LibraryDetailViewController: UIViewController {
     
     var content: Attributes
     
-    let artworkImage = UIImageView()
-    let techLabel = UILabel()
-    let titleLabel = UILabel()
-    
-    let contentInfoStack = UIStackView()
-    let dateLabel = UILabel()
-    let difficultyLabel = UILabel()
-    let durationLabel = UILabel()
-    
-    let buttonStackView = UIStackView()
-    let downloadButton = UIButton()
-    let bookmarkButton = UIButton()
-    
-    let descriptionLabel = UILabel()
-    let authorLabel = UILabel()
+    let detailView = LibraryDetailView()
+    let artworkImage = ContentImageView(frame: .zero)
     
     init(content: Attributes) {
         self.content = content
-        self.techLabel.text = content.technologyTripleString
-        self.titleLabel.text = content.name
-        self.dateLabel.text = content.releasedAt
-        self.difficultyLabel.text = content.difficulty
-        self.durationLabel.text = "\(content.duration)"
-        self.descriptionLabel.text = content.descriptionPlainText
-        self.authorLabel.text = content.contributorString
+        self.detailView.techLabel.text = content.technologyTripleString
+        self.detailView.titleLabel.text = content.name
+        self.detailView.dateLabel.text = content.formattedDate
+        self.detailView.difficultyLabel.text = content.difficulty?.capitalized
+        self.detailView.durationLabel.text = content.formattedDuration
+        self.detailView.descriptionLabel.text = content.descriptionPlainText
+        self.detailView.authorLabel.text = "Contributors: " + content.contributorString
+        
+        self.artworkImage.downloadImage(from: content.cardArtworkUrl)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -55,98 +42,31 @@ class LibraryDetailViewController: UIViewController {
 
 extension LibraryDetailViewController {
     func style() {
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.appColor
         navigationItem.largeTitleDisplayMode = .never
         
         artworkImage.translatesAutoresizingMaskIntoConstraints = false
-        artworkImage.image = UIImage(named: "temp")
+        artworkImage.clipsToBounds = true
         
-        techLabel.translatesAutoresizingMaskIntoConstraints = false
-        techLabel.font =  UIFont.preferredFont(forTextStyle: .body)
+        detailView.translatesAutoresizingMaskIntoConstraints = false
         
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        titleLabel.numberOfLines = 2
-        
-        setupArticleInfoStackView()
-        setupButtonStackView()
-        
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        descriptionLabel.numberOfLines = 0
-        
-        authorLabel.translatesAutoresizingMaskIntoConstraints = false
-        authorLabel.font = UIFont.preferredFont(forTextStyle: .body)
-        authorLabel.numberOfLines = 0
-        
+        view.addSubview(detailView)
         view.addSubview(artworkImage)
-        view.addSubview(techLabel)
-        view.addSubview(titleLabel)
-        view.addSubview(descriptionLabel)
-        view.addSubview(authorLabel)
-        
     }
-    
-    func setupArticleInfoStackView() {
-        contentInfoStack.translatesAutoresizingMaskIntoConstraints = false
-        contentInfoStack.axis = .horizontal
-        contentInfoStack.alignment = .leading
-        contentInfoStack.distribution = .equalSpacing
-        
-        [dateLabel, difficultyLabel, durationLabel].forEach { label in
-            label.font = UIFont.preferredFont(forTextStyle: .body)
-            contentInfoStack.addArrangedSubview(label)
-        }
-        
-        view.addSubview(contentInfoStack)
-    }
-    
-    func setupButtonStackView() {
-        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
-        buttonStackView.axis = .horizontal
-        buttonStackView.distribution = .equalCentering
-        buttonStackView.alignment = .leading
-        
-        downloadButton.setImage(UIImage(systemName: "square.and.arrow.down.fill"), for: .normal)
-        bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        
-        buttonStackView.addArrangedSubview(downloadButton)
-        buttonStackView.addArrangedSubview(bookmarkButton)
-        
-        view.addSubview(buttonStackView)
-    }
-    
+
     func layout() {
         
         NSLayoutConstraint.activate([
+
             artworkImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             artworkImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             artworkImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             artworkImage.heightAnchor.constraint(equalToConstant: view.frame.width),
             
-            techLabel.topAnchor.constraint(equalTo: artworkImage.bottomAnchor, constant: 8),
-            techLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            techLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            titleLabel.topAnchor.constraint(equalTo: techLabel.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            contentInfoStack.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
-            contentInfoStack.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            contentInfoStack.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            buttonStackView.topAnchor.constraint(equalTo: contentInfoStack.bottomAnchor, constant: 8),
-            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            buttonStackView.trailingAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            descriptionLabel.topAnchor.constraint(equalTo: buttonStackView.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            authorLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 8),
-            authorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            authorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            detailView.topAnchor.constraint(equalTo: artworkImage.bottomAnchor),
+            detailView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            detailView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            detailView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }

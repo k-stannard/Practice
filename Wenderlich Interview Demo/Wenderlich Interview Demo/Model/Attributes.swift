@@ -36,7 +36,7 @@ enum AttributeType {
 extension Attributes {
     
     var accessLevel: String {
-        free == true ? "    " : "Pro"
+        free == true ? "Free" : "Pro"
     }
     
     var formattedDate: String {

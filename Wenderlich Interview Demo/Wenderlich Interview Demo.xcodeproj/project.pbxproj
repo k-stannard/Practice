@@ -19,6 +19,7 @@
 		45F743B227A8C155004A4F84 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743B127A8C154004A4F84 /* Constants.swift */; };
 		45F743B527AA20EA004A4F84 /* ContentImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743B427AA20E9004A4F84 /* ContentImageView.swift */; };
 		45F743B827AC7F48004A4F84 /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743B727AC7F48004A4F84 /* Int+Ext.swift */; };
+		45F743BA27ACC576004A4F84 /* LibraryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45F743B927ACC576004A4F84 /* LibraryDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		45F743B127A8C154004A4F84 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		45F743B427AA20E9004A4F84 /* ContentImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentImageView.swift; sourceTree = "<group>"; };
 		45F743B727AC7F48004A4F84 /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
+		45F743B927ACC576004A4F84 /* LibraryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				45F743B427AA20E9004A4F84 /* ContentImageView.swift */,
+				45F743B927ACC576004A4F84 /* LibraryDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				45F743B827AC7F48004A4F84 /* Int+Ext.swift in Sources */,
 				45F743AB279DFE9C004A4F84 /* ContentDetailView.swift in Sources */,
 				45DE79712799138D00425173 /* ContentCell.swift in Sources */,
+				45F743BA27ACC576004A4F84 /* LibraryDetailView.swift in Sources */,
 				45F743B227A8C155004A4F84 /* Constants.swift in Sources */,
 				45F743B527AA20EA004A4F84 /* ContentImageView.swift in Sources */,
 			);

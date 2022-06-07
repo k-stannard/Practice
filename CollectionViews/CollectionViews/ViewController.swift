@@ -23,8 +23,10 @@ class ViewController: UIViewController {
 
 extension ViewController {
     func style() {
-        title = "Collection Views"
+        title = "Collection View"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.barTintColor = .systemTeal
+        
         configureCollectionView()
         configureDataSource()
     }
@@ -37,17 +39,12 @@ extension ViewController {
     }
     
     func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration<UICollectionViewListCell, Int> { (cell, indexPath, identifier) in
+        let cellRegistration = UICollectionView.CellRegistration<CustomCell, Int> { (cell, indexPath, identifier) in
             
-            var content = cell.defaultContentConfiguration()
-            content.text = "\(identifier)"
-            content.image = UIImage(systemName: "star")
-            cell.contentConfiguration = content
-            
-            //cell.label.text = "\(identifier)"
-//            cell.backgroundColor = .systemRed
-//            cell.layer.borderColor = UIColor.black.cgColor
-//            cell.layer.borderWidth = 1
+            cell.label.text = "\(identifier)"
+            cell.backgroundColor = .white
+            cell.layer.borderColor = UIColor.black.cgColor
+            cell.layer.borderWidth = 1
         }
         
         dataSource = UICollectionViewDiffableDataSource<Section, Int>(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
@@ -61,7 +58,7 @@ extension ViewController {
     }
     
     func createLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = .init(top: 5, leading: 5, bottom: 5, trailing: 5)
         

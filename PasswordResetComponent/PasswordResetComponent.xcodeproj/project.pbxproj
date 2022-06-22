@@ -7,25 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		452A68DF285006A4002FDF1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A68DE285006A4002FDF1A /* AppDelegate.swift */; };
-		452A68E3285006A4002FDF1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A68E2285006A4002FDF1A /* ViewController.swift */; };
-		452A68E8285006A9002FDF1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 452A68E7285006A9002FDF1A /* Assets.xcassets */; };
-		452A68EB285006A9002FDF1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 452A68E9285006A9002FDF1A /* LaunchScreen.storyboard */; };
-		452A68F328500A8F002FDF1A /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 452A68F228500A8F002FDF1A /* PostView.swift */; };
+		45CC81A5286374CF009A1485 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CC81A4286374CF009A1485 /* AppDelegate.swift */; };
+		45CC81A9286374CF009A1485 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CC81A8286374CF009A1485 /* ViewController.swift */; };
+		45CC81AE286374D2009A1485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45CC81AD286374D2009A1485 /* Assets.xcassets */; };
+		45CC81B1286374D2009A1485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45CC81AF286374D2009A1485 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		452A68DB285006A3002FDF1A /* Instaclone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instaclone.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		452A68DE285006A4002FDF1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		452A68E2285006A4002FDF1A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		452A68E7285006A9002FDF1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		452A68EA285006A9002FDF1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		452A68EC285006A9002FDF1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		452A68F228500A8F002FDF1A /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		45CC81A1286374CF009A1485 /* PasswordResetComponent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordResetComponent.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		45CC81A4286374CF009A1485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		45CC81A8286374CF009A1485 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		45CC81AD286374D2009A1485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		45CC81B0286374D2009A1485 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		45CC81B2286374D2009A1485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		452A68D8285006A3002FDF1A /* Frameworks */ = {
+		45CC819E286374CF009A1485 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -35,71 +33,78 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		452A68D2285006A3002FDF1A = {
+		45CC8198286374CF009A1485 = {
 			isa = PBXGroup;
 			children = (
-				452A68DD285006A3002FDF1A /* Instaclone */,
-				452A68DC285006A3002FDF1A /* Products */,
+				45CC81A3286374CF009A1485 /* PasswordResetComponent */,
+				45CC81A2286374CF009A1485 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		452A68DC285006A3002FDF1A /* Products */ = {
+		45CC81A2286374CF009A1485 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				452A68DB285006A3002FDF1A /* Instaclone.app */,
+				45CC81A1286374CF009A1485 /* PasswordResetComponent.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		452A68DD285006A3002FDF1A /* Instaclone */ = {
+		45CC81A3286374CF009A1485 /* PasswordResetComponent */ = {
 			isa = PBXGroup;
 			children = (
-				452A68DE285006A4002FDF1A /* AppDelegate.swift */,
-				452A68E2285006A4002FDF1A /* ViewController.swift */,
-				452A68F228500A8F002FDF1A /* PostView.swift */,
-				452A68E7285006A9002FDF1A /* Assets.xcassets */,
-				452A68E9285006A9002FDF1A /* LaunchScreen.storyboard */,
-				452A68EC285006A9002FDF1A /* Info.plist */,
+				45CC81A4286374CF009A1485 /* AppDelegate.swift */,
+				45CC81A8286374CF009A1485 /* ViewController.swift */,
+				45CC81B82863757F009A1485 /* Files */,
 			);
-			path = Instaclone;
+			path = PasswordResetComponent;
+			sourceTree = "<group>";
+		};
+		45CC81B82863757F009A1485 /* Files */ = {
+			isa = PBXGroup;
+			children = (
+				45CC81AD286374D2009A1485 /* Assets.xcassets */,
+				45CC81AF286374D2009A1485 /* LaunchScreen.storyboard */,
+				45CC81B2286374D2009A1485 /* Info.plist */,
+			);
+			name = Files;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		452A68DA285006A3002FDF1A /* Instaclone */ = {
+		45CC81A0286374CF009A1485 /* PasswordResetComponent */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 452A68EF285006A9002FDF1A /* Build configuration list for PBXNativeTarget "Instaclone" */;
+			buildConfigurationList = 45CC81B5286374D2009A1485 /* Build configuration list for PBXNativeTarget "PasswordResetComponent" */;
 			buildPhases = (
-				452A68D7285006A3002FDF1A /* Sources */,
-				452A68D8285006A3002FDF1A /* Frameworks */,
-				452A68D9285006A3002FDF1A /* Resources */,
+				45CC819D286374CF009A1485 /* Sources */,
+				45CC819E286374CF009A1485 /* Frameworks */,
+				45CC819F286374CF009A1485 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Instaclone;
-			productName = Instaclone;
-			productReference = 452A68DB285006A3002FDF1A /* Instaclone.app */;
+			name = PasswordResetComponent;
+			productName = PasswordResetComponent;
+			productReference = 45CC81A1286374CF009A1485 /* PasswordResetComponent.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		452A68D3285006A3002FDF1A /* Project object */ = {
+		45CC8199286374CF009A1485 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
-					452A68DA285006A3002FDF1A = {
+					45CC81A0286374CF009A1485 = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
 			};
-			buildConfigurationList = 452A68D6285006A3002FDF1A /* Build configuration list for PBXProject "Instaclone" */;
+			buildConfigurationList = 45CC819C286374CF009A1485 /* Build configuration list for PBXProject "PasswordResetComponent" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -107,46 +112,45 @@
 				en,
 				Base,
 			);
-			mainGroup = 452A68D2285006A3002FDF1A;
-			productRefGroup = 452A68DC285006A3002FDF1A /* Products */;
+			mainGroup = 45CC8198286374CF009A1485;
+			productRefGroup = 45CC81A2286374CF009A1485 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				452A68DA285006A3002FDF1A /* Instaclone */,
+				45CC81A0286374CF009A1485 /* PasswordResetComponent */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		452A68D9285006A3002FDF1A /* Resources */ = {
+		45CC819F286374CF009A1485 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452A68EB285006A9002FDF1A /* LaunchScreen.storyboard in Resources */,
-				452A68E8285006A9002FDF1A /* Assets.xcassets in Resources */,
+				45CC81B1286374D2009A1485 /* LaunchScreen.storyboard in Resources */,
+				45CC81AE286374D2009A1485 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		452A68D7285006A3002FDF1A /* Sources */ = {
+		45CC819D286374CF009A1485 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				452A68E3285006A4002FDF1A /* ViewController.swift in Sources */,
-				452A68F328500A8F002FDF1A /* PostView.swift in Sources */,
-				452A68DF285006A4002FDF1A /* AppDelegate.swift in Sources */,
+				45CC81A9286374CF009A1485 /* ViewController.swift in Sources */,
+				45CC81A5286374CF009A1485 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		452A68E9285006A9002FDF1A /* LaunchScreen.storyboard */ = {
+		45CC81AF286374D2009A1485 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				452A68EA285006A9002FDF1A /* Base */,
+				45CC81B0286374D2009A1485 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -154,7 +158,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		452A68ED285006A9002FDF1A /* Debug */ = {
+		45CC81B3286374D2009A1485 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -215,7 +219,7 @@
 			};
 			name = Debug;
 		};
-		452A68EE285006A9002FDF1A /* Release */ = {
+		45CC81B4286374D2009A1485 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -270,7 +274,7 @@
 			};
 			name = Release;
 		};
-		452A68F0285006A9002FDF1A /* Debug */ = {
+		45CC81B6286374D2009A1485 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -279,9 +283,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R5JCWQ932H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Instaclone/Info.plist;
+				INFOPLIST_FILE = PasswordResetComponent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -289,15 +294,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kotystannard.Instaclone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotystannard.PasswordResetComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		452A68F1285006A9002FDF1A /* Release */ = {
+		45CC81B7286374D2009A1485 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -306,9 +311,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R5JCWQ932H;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Instaclone/Info.plist;
+				INFOPLIST_FILE = PasswordResetComponent/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -316,36 +322,36 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kotystannard.Instaclone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kotystannard.PasswordResetComponent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		452A68D6285006A3002FDF1A /* Build configuration list for PBXProject "Instaclone" */ = {
+		45CC819C286374CF009A1485 /* Build configuration list for PBXProject "PasswordResetComponent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				452A68ED285006A9002FDF1A /* Debug */,
-				452A68EE285006A9002FDF1A /* Release */,
+				45CC81B3286374D2009A1485 /* Debug */,
+				45CC81B4286374D2009A1485 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		452A68EF285006A9002FDF1A /* Build configuration list for PBXNativeTarget "Instaclone" */ = {
+		45CC81B5286374D2009A1485 /* Build configuration list for PBXNativeTarget "PasswordResetComponent" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				452A68F0285006A9002FDF1A /* Debug */,
-				452A68F1285006A9002FDF1A /* Release */,
+				45CC81B6286374D2009A1485 /* Debug */,
+				45CC81B7286374D2009A1485 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 452A68D3285006A3002FDF1A /* Project object */;
+	rootObject = 45CC8199286374CF009A1485 /* Project object */;
 }

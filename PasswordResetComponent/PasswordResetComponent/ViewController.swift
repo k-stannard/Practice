@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     let passwordTextField = PasswordTextField(placeholderText: "New password")
     let stackView = UIStackView()
+    let passwordStatusView = PasswordStatusView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class ViewController: UIViewController {
 extension ViewController {
     func style() {
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+        passwordStatusView.translatesAutoresizingMaskIntoConstraints = false
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -30,6 +32,7 @@ extension ViewController {
     
     func layout() {
         stackView.addArrangedSubview(passwordTextField)
+        stackView.addArrangedSubview(passwordStatusView)
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([

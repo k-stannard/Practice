@@ -6,25 +6,30 @@
 //
 
 import UIKit
+import WebKit
 
 class DetailViewController: UIViewController {
     
-    let detailLabel = UILabel()
+    let webView = WKWebView()
     
     var detailItem: Commit?
+    
+    override func loadView() {
+        self.view = webView
+        configureURL()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        detailLabel.translatesAutoresizingMaskIntoConstraints = false
-        detailLabel.numberOfLines = 0
-        view.addSubview(detailLabel)
-        detailLabel.centerInSuperview(size: .init(width: view.frame.width - 50, height: view.frame.height))
-     
-        if let detail = self.detailItem {
-            detailLabel.text = detail.message
-            //navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Commit 1/\(detail.author.commits.count)", style: .plain, target: self, action: #selector(showAuthorCommits))
+
+    }
+    
+    func configureURL() {
+        let urlString = detailItem?.url ?? ""
+        if let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            webView.load(request)
         }
     }
 }
